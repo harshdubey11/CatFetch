@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Styles from "./Explore.module.scss";
 import Topbar from "../topbar/topbar";
-import { Button, Select,useToast } from "@chakra-ui/react";
-import { getAllTags, getByTag, getRandomCat } from "../../services/apicalls";
+import { Button, Select } from "@chakra-ui/react";
+import { getAllTags} from "../../services/apicalls";
 
 import axios from "axios";
 import Footer from "../Footer/Footer";
 
 function Explore() {
-  const toast=useToast();
   const [allTags, setTags] = useState([]);
   const [InputFields, setInputFields] = useState(null);
   const [image, setImage] = useState("");
