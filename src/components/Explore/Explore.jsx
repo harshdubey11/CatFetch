@@ -15,17 +15,9 @@ function Explore() {
 
   const getimage = () => {
     axios
-      .get("https://cataas.com" + "/cat", {
-        responseType: "arraybuffer",
-      })
+      .get("https://cataas.com" + "/cat")
       .then((res) => {
-        const base64 = btoa(
-          new Uint8Array(res.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            ""
-          )
-        );
-        setImage(base64);
+        setImage(res.data);
       });
   };
   const handleInputChange = ({ target: { name, value } }) => {
@@ -48,17 +40,10 @@ function Explore() {
 
   async function GetImageBytag() {
     axios
-      .get("https://cataas.com" + "/cat/" + InputFields.tag, {
-        responseType: "arraybuffer",
-      })
+      .get("https://cataas.com" + "/cat/" + InputFields.tag)
       .then((res) => {
-        const base64 = btoa(
-          new Uint8Array(res.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            ""
-          )
-        )
-        setImage(base64);
+        console.log("url",res.data);
+        setImage(res.data);
       });
   }
 
@@ -93,7 +78,7 @@ function Explore() {
         )}
         {image ? (
           <div className="image">
-            <img src={`data:image/jpeg;charset=utf-8;base64,${image}`} />
+            <img src={image.url} />
           </div>
         ) : (
           ""
