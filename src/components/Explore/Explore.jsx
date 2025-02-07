@@ -14,6 +14,7 @@ function Explore() {
 
   const getimage = () => {
     axios
+    // eslint-disable-next-line
       .get("https://cataas.com" + "/cat")
       .then((res) => {
         setImage(res.data);
@@ -25,6 +26,7 @@ function Explore() {
   useEffect(() => {
     fetchTags();
     setImage("");
+    // eslint-disable-next-line
   }, [InputFields]);
 
   async function fetchTags() {
@@ -39,6 +41,7 @@ function Explore() {
 
   async function GetImageBytag() {
     axios
+    // eslint-disable-next-line
       .get("https://cataas.com" + "/cat/" + InputFields.tag)
       .then((res) => {
         console.log("url",res.data);
@@ -77,7 +80,7 @@ function Explore() {
         )}
         {image ? (
           <div className="image">
-            <img src={image.url} />
+            <img alt="retrieved" src={image.url} />
           </div>
         ) : (
           ""
